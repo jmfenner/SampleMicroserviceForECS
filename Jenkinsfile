@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Build Container') {
       steps {
-        sh '''docker build -t helloworld-service:${BUILD_TAG} app
+        sh '''docker build -t helloworld-service:${BUILD_TAG} .
         '''
         sh '''#!/usr/bin/env bash
 if [[ $(aws ecr describe-repositories --query 'repositories[?repositoryName==`helloworld-service`].repositoryUri' --output text) -lt 1 ]]; then
